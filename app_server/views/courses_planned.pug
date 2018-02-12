@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    h1  Ongoing or future courses i have planned to study:
+    ul
+        each course in courses
+            li= course.year + ': ' + course.topic

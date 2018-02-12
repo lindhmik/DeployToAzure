@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    h1  Courses i have already done:
+    ul
+        each course in courses
+            li= course.year + ': ' + course.topic
