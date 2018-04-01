@@ -1,3 +1,4 @@
+
 const mongoose = require('mongoose');
 const dbURI='mongodb://lindhmik:kiikkala@ds012188.mlab.com:12188/mycourses';
 mongoose.connect(dbURI);
@@ -14,4 +15,4 @@ mongoose.connection.on('disconnected',function(){
     console.log('Mongoose disconnected');
 })
 
-require('./appSchemas')
+require('./appSchemas');
