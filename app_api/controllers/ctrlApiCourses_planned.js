@@ -13,7 +13,7 @@ const addCourse = function(req,res){
     res.status(201).json({'Add course':'Work in progress'});
 };*/
 const courselist = function (req,res) {
-    courses_done_model.find({}, function (err, courses) {
+    courses_planned_model.find({}, function (err, courses) {
         if (err) {
             res.status(404).json(err);
         }
@@ -25,7 +25,7 @@ const courselist = function (req,res) {
 
 }
     const addCourse = function(req,res){
-        courses_done_model.create(req.body,function (err, newCourse) {
+        courses_planned_model.create(req.body,function (err, newCourse) {
             if(err){
                 res.status(400).json(err);
             }

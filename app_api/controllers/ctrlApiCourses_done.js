@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const courses_done_model = mongoose.model('coursesDone');
+const courses_done_model = mongoose.model('courses_done');
 
 /*const courselist = function (req,res) {
     res
@@ -17,8 +17,8 @@ const courselist = function (req,res) {
         {
             res.status(200).json(courses);
         }
-    });
-}
+    })
+};
 
 
 const addCourse = function(req,res){
@@ -29,11 +29,11 @@ const addCourse = function(req,res){
         else {
             res.status(201).json(newCourse);
         }
-    });
+    })
 };
 
 
 module.exports = {
     courselist,
     addCourse
-}
+};

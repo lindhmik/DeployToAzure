@@ -1,6 +1,6 @@
 
 db.dropDatabase();
-db.coursesDone.save (
+db.courses_done.save (
     [
         {year: '2016', topic: 'Basics of HTML, CSS and Web designing'},
         {year: '2017', topic: 'Basics of Programming (Java SE)'},
