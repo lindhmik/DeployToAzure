@@ -10,7 +10,7 @@ const addData = function(req, res){
 
     const postdata = {
         year: req.body.year,
-        course: req.body.course
+        topic: req.body.course
     };
 
     const requestOptions = {
@@ -42,7 +42,7 @@ const courselist = function(req, res) {
         qs: {}
     };
     request
-    {
+    (
         requestOptions,
             function (err, response, body) {
                 if (err) {
@@ -56,7 +56,7 @@ const courselist = function(req, res) {
                 }
             }
 
-    };
+    );
 };
     module.exports={
       courselist,

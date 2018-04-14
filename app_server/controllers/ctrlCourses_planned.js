@@ -10,7 +10,7 @@ const addData = function(req, res){
 
     const postdata = {
         year: req.body.year,
-        course: req.body.course
+        topic: req.body.topic
     }
 
     const requestOptions = {
@@ -23,7 +23,7 @@ const addData = function(req, res){
         requestOptions,
         function (err, response) {
             if (response.statusCode === 201){
-                res.redirect('/courses_done');
+                res.redirect('/courses_planned');
             } else {
                 res.render('error', {message: ' Error while adding data: ' +
                 response.statusMessage + ' (' + response.statusCode + ')'});
@@ -33,7 +33,7 @@ const addData = function(req, res){
     )
 }
 const courselist = function(req,res) {
-    const path = '/api/courses_done';
+    const path = '/api/courses_planned';
     const requestOptions = {
         url: apiURL.server + path,
         method: 'GET',
@@ -41,7 +41,7 @@ const courselist = function(req,res) {
         qs: {}
     };
     request
-    {
+    (
         requestOptions,
             function (err, response, body) {
                 if (err) {
@@ -55,7 +55,7 @@ const courselist = function(req,res) {
                 }
             }
 
-    };
+    );
 };
 module.exports={
     courselist,

@@ -15,8 +15,8 @@ router
     .get(ctrlDone.showForm)
     .post(ctrlDone.addData)
 
-/*router
+router
     .route('/courses_planned/add')
     .get(ctrlPlanned.showForm)
-    .post(ctrlPlanned.addData);*/
+    .post(ctrlPlanned.addData);
 module.exports = router;
