@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    .row
+        h3 New planned course
+
+     form(action="", method="post")
+         .form-group.row
+             label Year
+                input.form-control(name="year")
+          .form-group.row
+             label Course
+                input.form-control(name="course")
+         .form-group.row
+             button.btn-primary Add

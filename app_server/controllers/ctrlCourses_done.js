@@ -1,21 +1,65 @@
-const courselist = function(req,res) {
-    res.render('courses_done', {
-        courses:
-            [
-                {year: '2016', topic: 'Basics of HTML, CSS and Web designing'},
-                {year: '2017', topic: 'Basics of Programming (Java SE)'},
-                {year: '2017', topic: 'Basics of relational databases'},
-                {year: '2017', topic: 'Software testing'},
-                {year: '2017', topic: 'Basics of PHP -language'},
-                {year: '2017', topic: 'Basics of Python -language'},
-                {year: '2017', topic: 'Object-oriented programming with Java'},
-                {year: '2017', topic: 'Dynamic web-applications with Javascript'},
-                {year: '2017', topic: 'Introduction to mobile app design and development'},
-                {year: '2017', topic: 'Web Content management systems'}
+const request = require('request');
+const apiURL = require('./apiURLs');
 
-            ]
-    });
+const showForm = function(req,res){
+    res.render('courses_done_add')
 }
+
+const addData = function(req, res){
+    const path = '/api/courses_done';
+
+    const postdata = {
+        year: req.body.year,
+        course: req.body.course
+    };
+
+    const requestOptions = {
+        url: apiURL.server + path,
+        method: 'POST',
+        json: postdata
+    };
+
+    request(
+        requestOptions,
+        function (err, response) {
+            if (response.statusCode === 201){
+                res.redirect('/courses_done');
+            } else {
+                res.render('error', {message: ' Error while adding data: ' +
+                response.statusMessage + ' (' + response.statusCode + ')'});
+            }
+
+        }
+    )
+}
+
+const courselist = function(req, res) {
+    const path = '/api/courses_done';
+    const requestOptions = {
+        url: apiURL.server + path,
+        method: 'GET',
+        json: {},
+        qs: {}
+    };
+    request
+    {
+        requestOptions,
+            function (err, response, body) {
+                if (err) {
+                    res.render('error', {message: 'Error accessing API: ' + response.statusMessage + ' (' + response.statusCode + ')'});
+                } else if (response.statusCode !== 200) {
+                    res.render('error', {message: 'Unexcepted response data:'});
+                } else if (!body.length) {
+                    res.render('error', {message: 'No documents in collection:'});
+                } else {
+                    res.render('courses_done', {courses: body});
+                }
+            }
+
+    };
+};
     module.exports={
-      courselist
-    }
+      courselist,
+      showForm,
+      addData
+    };

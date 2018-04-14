@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    .row
+        h3 New course:
+    form(action="", method="post")
+        .form-group.row
+            label Year
+                input.form-control(name="year")
+        .form-group.row
+            label Team
+                input.form-control(name="course")
+
+        .form-group.row
+
+            button.btn-primary Add
